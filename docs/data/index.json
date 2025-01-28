@@ -1,30 +1,35 @@
 {
+    "title": "Pro Vision",
     "team": [
         {
-            "name": "Team Member Name 1",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Dissanayake P.D.",
+            "email": "e20084@eng.pdn.ac.lk",
+            "eNumber": "E/20/084"
         },
         {
-            "name": "Team Member Name 2",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Bandara A.M.N.C.",
+            "email": "e20032@eng.pdn.ac.lk",
+            "eNumber": "E/20/032"
         },
         {
-            "name": "Team Member Name 3",
-            "email": "email@eng.pdn.ac.lk",
-            "eNumber": "E/yy/xxx"
+            "name": "Bandara G.M.M.R.",
+            "email": "e20034@eng.pdn.ac.lk",
+            "eNumber": "E/20/034"
+        },
+        {
+            "name": "Janakantha S.M.B.G.",
+            "email": "e20157@eng.pdn.ac.lk",
+            "eNumber": "E/20/157"
         }
     ],
     "supervisors": [
         {
-            "name": "Dr. Supervisor 1",
-            "email": "email@eng.pdn.ac.lk"
-        },
-        {
-            "name": "Supervisor 2",
-            "email": "email@eng.pdn.ac.lk"
+            "name": "Dr. Upul Jayasinghe",
+            "email": "upuljm@eng.pdn.ac.lk"
         }
     ],
-    "tags": []
+    "tags": [
+        "Image Processing",
+        "Neural Networks"
+    ]
 }
