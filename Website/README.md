@@ -1,11 +1,11 @@
-# TODO_APP
-A simple full stack todo web app with testing using Typescript. 
-This is used to demonstrate the Cypress end-to-end testing framework. 
+# ProVision - Website
+A simple full stack image processing web app with testing using Typescript and Cypress. 
+This is used to demonstrate the weather effect removal in images. 
 
 
 ---
 
-## Cypress Setup for a React Project
+## General Setup for the React Project
 
 ### Prerequisites
 1. A React project initialized using `create-react-app` or other setups.
@@ -84,11 +84,6 @@ npm run cy:open
 ### * BackEnd  - Node + Express
 
   ![image](https://github.com/user-attachments/assets/bdf7c9e8-e941-462c-a321-bc425751b793)
-
-
-### * Database - MongoDB
-
-  ![image](https://github.com/user-attachments/assets/f9fb4f2b-e9f8-409c-a030-0b18154277af)
 
 ### * Testing  - Cypress
 
