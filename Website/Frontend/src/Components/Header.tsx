@@ -32,7 +32,7 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
         sx={{ cursor: "pointer" }}
         onClick={handleClick}
       >
-        TODO APP
+        ProVision
       </Typography>
       <IconButton data-testid="cypress-theme-toggle" onClick={toggleTheme}>
         <Tooltip title="Change Theme">

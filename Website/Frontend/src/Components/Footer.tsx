@@ -14,7 +14,7 @@ function Footer() {
         variant="caption"
         color="primary.dark"
       >
-        All rights reserved © 2025 PeraBytes
+        All rights reserved © 2025 ProVision
       </Typography>
     </Box>
   );

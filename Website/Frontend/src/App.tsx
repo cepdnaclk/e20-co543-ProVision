@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles"; // Use MUI's ThemeProvider
 import { darkTheme, lightTheme } from "./Theme"; // Custom themes
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
@@ -14,8 +14,20 @@ function App() {
 
   // Function to toggle the theme
   const toggleTheme = () => {
-    setIsDarkThemeOn((prev) => !prev);
+    setIsDarkThemeOn((prev) => {
+      localStorage.setItem("Dark_Theme", JSON.stringify(!prev));
+      return !prev;
+    });
   };
+
+  useEffect(() => {
+    let theme = localStorage.getItem("Dark_Theme");
+    if (!theme) {
+      setIsDarkThemeOn(false);
+    } else {
+      setIsDarkThemeOn(JSON.parse(theme));
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={isDarkThemeOn ? darkTheme : lightTheme}>
