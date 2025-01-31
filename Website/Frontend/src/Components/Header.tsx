@@ -1,7 +1,11 @@
-import { Box } from "@mui/system";
+import { Box, Stack } from "@mui/system";
 import ContrastIcon from "@mui/icons-material/Contrast";
 import { IconButton, Tooltip, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Tab from "@mui/material/Tab";
+import TabContext from "@mui/lab/TabContext";
+import TabList from "@mui/lab/TabList";
+import { useState } from "react";
 
 interface HeaderProps {
   isDarkThemeOn: boolean;
@@ -10,10 +14,21 @@ interface HeaderProps {
 
 function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
   const navigate = useNavigate();
+  const currentPath = window.location.pathname;
+  console.log(currentPath);
+
+  const [value, setValue] = useState<string>(currentPath);
+
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
+    console.log("New tab: ", newValue);
+    navigate(newValue);
+    setValue(newValue);
+  };
 
   const handleClick = () => {
     navigate("/"); // Redirect to the home page
   };
+
   return (
     <Box
       data-testid="cypress-header-background"
@@ -34,11 +49,24 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
       >
         ProVision
       </Typography>
-      <IconButton data-testid="cypress-theme-toggle" onClick={toggleTheme}>
-        <Tooltip title="Change Theme">
-          <ContrastIcon />
-        </Tooltip>
-      </IconButton>
+
+      <Stack direction="row">
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            <TabList onChange={handleChange} aria-label="lab API tabs example">
+              <Tab label="home" value="/home" />
+              <Tab label="tab2" value="/tab2" />
+              <Tab label="tab3" value="/tab3" />
+            </TabList>
+          </Box>
+        </TabContext>
+
+        <IconButton data-testid="cypress-theme-toggle" onClick={toggleTheme}>
+          <Tooltip title="Change Theme">
+            <ContrastIcon />
+          </Tooltip>
+        </IconButton>
+      </Stack>
     </Box>
   );
 }
