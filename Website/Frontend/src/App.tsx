@@ -49,7 +49,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/mytodo" element={<Todo />} />
+              <Route path="/tab1" element={<Todo />} />
             </Routes>
           </Box>
 
