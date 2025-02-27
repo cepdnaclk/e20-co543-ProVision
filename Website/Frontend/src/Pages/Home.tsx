@@ -4,8 +4,11 @@ import {
   Button,
   Container,
   Divider,
+  Grid2 as Grid,
+  Link,
   List,
   ListItem,
+  ListItemText,
   Paper,
   Stack,
   Table,
@@ -18,6 +21,65 @@ import {
 } from "@mui/material";
 import heroImage from "../assets/Homepage_bg.jpg";
 import { useTheme } from "@mui/material/styles";
+import PhotoCard from "../Components/PhotoCard";
+
+const links = [
+  { label: "Project Repository", url: "https://github.com/your-repo" },
+  { label: "Project Page", url: "https://your-project-page.com" },
+  {
+    label: "Department of Computer Engineering",
+    url: "https://www.ce.pdn.ac.lk/",
+  },
+  { label: "University of Peradeniya", url: "https://www.pdn.ac.lk/" },
+];
+
+const TEAM = [
+  {
+    name: "Alice Johnson",
+    regNumber: "E/18/101",
+    imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
+    githubUrl: "https://github.com/alicejohnson",
+    linkedInUrl: "https://linkedin.com/in/alicejohnson",
+    portfolioUrl: "https://portfolio.com/alicejohnson", // CN e-Portfolio
+  },
+  {
+    name: "Bob Smith",
+    regNumber: "E/18/102",
+    imageUrl: "https://randomuser.me/api/portraits/men/46.jpg",
+    githubUrl: "https://github.com/bobsmith",
+    linkedInUrl: "https://linkedin.com/in/bobsmith",
+    portfolioUrl: "https://portfolio.com/bobsmith",
+  },
+  {
+    name: "Charlie Davis",
+    regNumber: "E/18/103",
+    imageUrl: "https://randomuser.me/api/portraits/men/47.jpg",
+    githubUrl: "https://github.com/charliedavis",
+    linkedInUrl: "https://linkedin.com/in/charliedavis",
+    portfolioUrl: "https://portfolio.com/charliedavis",
+  },
+  {
+    name: "Diana Martinez",
+    regNumber: "E/18/104",
+    imageUrl: "https://randomuser.me/api/portraits/women/48.jpg",
+    githubUrl: "https://github.com/dianamartinez",
+    linkedInUrl: "https://linkedin.com/in/dianamartinez",
+    portfolioUrl: "https://portfolio.com/dianamartinez",
+  },
+];
+
+const SUPERVISORS = [
+  {
+    name: "Alice Johnson",
+    imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
+    linkedInUrl: "https://linkedin.com/in/alicejohnson",
+  },
+  {
+    name: "Bob Smith",
+    imageUrl: "https://randomuser.me/api/portraits/men/46.jpg",
+    linkedInUrl: "https://linkedin.com/in/bobsmith",
+  },
+];
 
 function Home() {
   const handleClick = () => {
@@ -508,6 +570,7 @@ function Home() {
 
       <TableContainer
         component={Paper}
+        elevation={4}
         sx={{
           bgcolor: theme.palette.secondary.main,
           width: "90%",
@@ -599,6 +662,99 @@ function Home() {
           my: 5,
         }}
       />
+
+      {/* Our Team Section */}
+      <Container>
+        <Typography textAlign={"center"} variant="h4" mb={1} color="primary">
+          Our Team
+        </Typography>
+
+        <Grid container spacing={2} my={3}>
+          {TEAM.map((member, id) => (
+            <Grid key={id} size={{ xs: 12, md: 6, lg: 3 }}>
+              <PhotoCard
+                key={id}
+                name={member.name}
+                regNumber={member.regNumber}
+                imageUrl={member.imageUrl}
+                githubUrl={member.githubUrl}
+                linkedInUrl={member.linkedInUrl}
+                portfolioUrl={member.portfolioUrl}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      <Divider
+        orientation="horizontal"
+        sx={{
+          borderColor: alpha(theme.palette.primary.main, 0.5),
+          borderWidth: 2,
+          borderStyle: "solid",
+          width: "80%",
+          my: 5,
+        }}
+      />
+
+      {/* Supervisors Section */}
+      <Container>
+        <Typography textAlign={"center"} variant="h4" mb={1} color="primary">
+          Supervisors
+        </Typography>
+
+        <Grid container spacing={2} my={3}>
+          {SUPERVISORS.map((member, id) => (
+            <Grid
+              key={id}
+              size={{ xs: 12, md: 6 }}
+              display={"flex"}
+              justifyContent={"center"}
+            >
+              <PhotoCard {...member} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      <Divider
+        orientation="horizontal"
+        sx={{
+          borderColor: alpha(theme.palette.primary.main, 0.5),
+          borderWidth: 2,
+          borderStyle: "solid",
+          width: "80%",
+          my: 5,
+        }}
+      />
+
+      {/* Usefull Links Section */}
+      <Container>
+        <Typography textAlign={"center"} variant="h4" mb={2} color="primary">
+          Useful Links
+        </Typography>
+
+        <List>
+          <Grid container spacing={2}>
+            {links.map((link, index) => (
+              <Grid key={index} size={{ xs: 12, md: 6 }}>
+                <ListItem disablePadding>
+                  <Link
+                    width={"100%"}
+                    textAlign={"center"}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    underline="hover"
+                  >
+                    <ListItemText primary={link.label} />
+                  </Link>
+                </ListItem>
+              </Grid>
+            ))}
+          </Grid>
+        </List>
+      </Container>
     </Box>
   );
 }
