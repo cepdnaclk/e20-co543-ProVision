@@ -6,7 +6,14 @@ import {
   Divider,
   List,
   ListItem,
+  Paper,
   Stack,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
 } from "@mui/material";
 import heroImage from "../assets/Homepage_bg.jpg";
@@ -46,7 +53,7 @@ function Home() {
           padding: "0 5%",
           color: "white",
           "@media (max-width: 600px)": {
-            height: "200px",
+            height: "400px",
             padding: "20px 0",
           },
         }}
@@ -73,6 +80,8 @@ function Home() {
             variant="outlined"
             onClick={handleClick}
             sx={{
+              textWrap: "nowrap",
+              textDecoration: "bold",
               borderRadius: "25px",
               border: "3px solid rgba(255, 255, 255, 0.6)",
               width: "150px",
@@ -413,6 +422,172 @@ function Home() {
           }}
         />
       </Container>
+
+      <Divider
+        orientation="horizontal"
+        sx={{
+          borderColor: alpha(theme.palette.primary.main, 0.5),
+          borderWidth: 2,
+          borderStyle: "solid",
+          width: "80%",
+          my: 5,
+        }}
+      />
+
+      {/* Methadology 2 Section */}
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", md: "row" },
+          gap: 5,
+          alignItems: "center",
+        }}
+      >
+        <Box
+          component="img"
+          src={heroImage}
+          alt="Problem Statement"
+          sx={{
+            width: { xs: "100%", md: "35%" },
+            borderRadius: "25px",
+          }}
+        />
+        <Stack>
+          <Typography variant="h4" mb={1} color="primary">
+            Methodology II - Specific Weather Condition Methods
+          </Typography>
+          <Typography fontFamily="arial" color="primary" variant="h5" mb={1}>
+            Overview
+          </Typography>
+          <Typography
+            textAlign="justify"
+            fontFamily="arial"
+            color="primary"
+            mb={2}
+          >
+            Tailored implementations for specific weather effects, optimizing
+            results for unique conditions.
+          </Typography>
+
+          <Typography fontFamily="arial" color="primary" variant="h5">
+            Characteristics
+          </Typography>
+          <List
+            sx={{
+              listStyleType: "disc",
+              mb: 2,
+              pl: 4,
+              "& li::marker": {
+                color: "primary.main",
+              },
+            }}
+          >
+            <ListItem
+              sx={{
+                display: "list-item",
+                p: 0,
+              }}
+            >
+              <Typography fontFamily="arial" color="primary">
+                Provides more efficient outputs.
+              </Typography>
+            </ListItem>
+            <ListItem sx={{ display: "list-item", p: 0 }}>
+              <Typography fontFamily="arial" color="primary">
+                Optimized for intended weather conditions.
+              </Typography>
+            </ListItem>
+            <ListItem sx={{ display: "list-item", p: 0 }}>
+              <Typography fontFamily="arial" color="primary">
+                Requires more computational power.
+              </Typography>
+            </ListItem>
+          </List>
+        </Stack>
+      </Container>
+
+      <TableContainer
+        component={Paper}
+        sx={{
+          bgcolor: theme.palette.secondary.main,
+          width: "90%",
+          mx: "auto",
+          my: 2,
+          p: 2,
+          overflowX: "auto",
+        }}
+      >
+        <Table sx={{ minWidth: 650 }} aria-label="weather condition table">
+          <TableHead>
+            <TableRow>
+              <TableCell sx={{ textWrap: "noWrap" }}>
+                <b>Weather Condition</b>
+              </TableCell>
+              <TableCell align="center">
+                <b>Proposed Approaches</b>
+              </TableCell>
+              <TableCell align="center">
+                <b>Challenges</b>
+              </TableCell>
+              <TableCell align="center">
+                <b>Potential Solutions</b>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell align="center" component="th" scope="row">
+                Rain
+              </TableCell>
+              <TableCell align="center">
+                CNN, GAN, Image Decomposition
+              </TableCell>
+              <TableCell align="center">
+                High data needs, model complexity, real-time issues
+              </TableCell>
+              <TableCell align="center">
+                Data augmentation, lightweight models, edge computing
+              </TableCell>
+            </TableRow>
+
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell component="th" align="center" scope="row">
+                Haze
+              </TableCell>
+              <TableCell align="center">
+                L0 Gradient, Dictionary Learning, Guided Filtering
+              </TableCell>
+              <TableCell align="center">
+                Sparse representation, training complexity, scalability
+              </TableCell>
+              <TableCell align="center">
+                Pre-trained models, adaptive filtering, cloud computing
+              </TableCell>
+            </TableRow>
+
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell component="th" align="center" scope="row">
+                Snow
+              </TableCell>
+              <TableCell align="center">
+                Contrast Restoration, Multi-Scale CNN, Histogram Stretching
+              </TableCell>
+              <TableCell align="center">
+                Physical models, parameter sensitivity, computational load
+              </TableCell>
+              <TableCell align="center">
+                Hybrid models, feature engineering, GPU acceleration
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
 
       <Divider
         orientation="horizontal"
