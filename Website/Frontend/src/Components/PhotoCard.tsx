@@ -7,8 +7,9 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-import { GitHub, LinkedIn, Web } from "@mui/icons-material";
+import { GitHub, LinkedIn } from "@mui/icons-material";
 import { useState } from "react";
+import LanguageIcon from "@mui/icons-material/Language";
 
 interface PhotoCardProps {
   name: string;
@@ -109,7 +110,7 @@ const PhotoCard: React.FC<PhotoCardProps> = ({
                   target="_blank"
                   sx={{ color: "white" }}
                 >
-                  <Web fontSize="large" />
+                  <LanguageIcon fontSize="large" />
                 </IconButton>
               </Tooltip>
             )}
