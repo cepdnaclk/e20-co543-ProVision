@@ -14,15 +14,18 @@ interface HeaderProps {
 
 function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
   const navigate = useNavigate();
-  const currentPath = window.location.pathname;
-  console.log(currentPath);
-
-  const [value, setValue] = useState<string>(currentPath);
+  const [value, setValue] = useState<string>("home");
 
   const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     console.log("New tab: ", newValue);
-    navigate(newValue);
+
     setValue(newValue);
+    const section = document.getElementById(newValue);
+
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+    //navigate(newValue);
   };
 
   const handleClick = () => {
@@ -54,13 +57,13 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="home" value="/home" />
-              <Tab label="about" value="/about" />
-              <Tab label="problem Statement" value="/problem" />
-              <Tab label="objectives" value="/objectives" />
-              <Tab label="methodology I" value="/method1" />
-              <Tab label="methodology II" value="/method2" />
-              <Tab label="team" value="/team" />
+              <Tab label="home" value="home" />
+              <Tab label="about" value="about" />
+              <Tab label="problem Statement" value="problem" />
+              <Tab label="objectives" value="objectives" />
+              <Tab label="methodology I" value="method1" />
+              <Tab label="methodology II" value="method2" />
+              <Tab label="team" value="team" />
             </TabList>
           </Box>
         </TabContext>
