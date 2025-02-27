@@ -22,6 +22,7 @@ import {
 import heroImage from "../assets/Homepage_bg.jpg";
 import { useTheme } from "@mui/material/styles";
 import PhotoCard from "../Components/PhotoCard";
+import TryButton from "../Components/TryButton";
 
 const links = [
   { label: "Project Repository", url: "https://github.com/your-repo" },
@@ -485,6 +486,8 @@ function Home() {
         />
       </Container>
 
+      <TryButton page="method1" />
+
       <Divider
         orientation="horizontal"
         sx={{
@@ -651,6 +654,8 @@ function Home() {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <TryButton page="method2" />
 
       <Divider
         orientation="horizontal"
