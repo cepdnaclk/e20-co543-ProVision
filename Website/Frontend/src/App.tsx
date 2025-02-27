@@ -34,6 +34,8 @@ function App() {
       <Box
         width="100vw"
         height="100vh"
+        padding={0}
+        margin={0}
         bgcolor={isDarkThemeOn ? "grey.900" : "grey.100"}
       >
         <BrowserRouter>
