@@ -25,8 +25,14 @@ import PhotoCard from "../Components/PhotoCard";
 import TryButton from "../Components/TryButton";
 
 const links = [
-  { label: "Project Repository", url: "https://github.com/your-repo" },
-  { label: "Project Page", url: "https://your-project-page.com" },
+  {
+    label: "Project Repository",
+    url: "https://github.com/cepdnaclk/e20-co543-ProVision/",
+  },
+  {
+    label: "Project Page",
+    url: "https://cepdnaclk.github.io/e20-co543-ProVision/",
+  },
   {
     label: "Department of Computer Engineering",
     url: "https://www.ce.pdn.ac.lk/",
@@ -103,6 +109,7 @@ function Home() {
     >
       {/* Hero Section */}
       <Box
+        id="home"
         height="calc(100vh - 100px)"
         width="100%"
         mb={5}
@@ -163,6 +170,7 @@ function Home() {
 
       {/* About Section */}
       <Container
+        id="about"
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -208,6 +216,7 @@ function Home() {
 
       {/* Problem Statement Section */}
       <Container
+        id="problem"
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -254,6 +263,7 @@ function Home() {
 
       {/* Objectives Section */}
       <Container
+        id="objectives"
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -339,6 +349,7 @@ function Home() {
 
       {/* Methadology 1 Section */}
       <Container
+        id="method1"
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -503,6 +514,7 @@ function Home() {
 
       {/* Methadology 2 Section */}
       <Container
+        id="method2"
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
@@ -671,7 +683,7 @@ function Home() {
       />
 
       {/* Our Team Section */}
-      <Container>
+      <Container id="team">
         <Typography textAlign={"center"} variant="h4" mb={1} color="primary">
           Our Team
         </Typography>
@@ -785,6 +797,17 @@ function Home() {
           </ListItem>
         </List>
       </Container>
+
+      <Divider
+        orientation="horizontal"
+        sx={{
+          borderColor: alpha(theme.palette.primary.main, 0.5),
+          borderWidth: 2,
+          borderStyle: "solid",
+          width: "80%",
+          my: 5,
+        }}
+      />
 
       {/* Usefull Links Section */}
       <Container>
