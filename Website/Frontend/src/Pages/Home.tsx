@@ -36,50 +36,52 @@ const links = [
 
 const TEAM = [
   {
-    name: "Alice Johnson",
-    regNumber: "E/18/101",
-    imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
-    githubUrl: "https://github.com/alicejohnson",
-    linkedInUrl: "https://linkedin.com/in/alicejohnson",
-    portfolioUrl: "https://portfolio.com/alicejohnson", // CN e-Portfolio
-  },
-  {
-    name: "Bob Smith",
-    regNumber: "E/18/102",
-    imageUrl: "https://randomuser.me/api/portraits/men/46.jpg",
+    name: "Bandara A.M.N.C.",
+    regNumber: "E/20/032",
+    imageUrl: "	https://people.ce.pdn.ac.lk/images/students/e20/e20032.jpg",
     githubUrl: "https://github.com/bobsmith",
     linkedInUrl: "https://linkedin.com/in/bobsmith",
     portfolioUrl: "https://portfolio.com/bobsmith",
   },
   {
-    name: "Charlie Davis",
-    regNumber: "E/18/103",
-    imageUrl: "https://randomuser.me/api/portraits/men/47.jpg",
+    name: "Bandara G.M.M.R.",
+    regNumber: "E/20/034",
+    imageUrl: "	https://people.ce.pdn.ac.lk/images/students/e20/e20034.jpg",
     githubUrl: "https://github.com/charliedavis",
     linkedInUrl: "https://linkedin.com/in/charliedavis",
     portfolioUrl: "https://portfolio.com/charliedavis",
   },
   {
-    name: "Diana Martinez",
-    regNumber: "E/18/104",
-    imageUrl: "https://randomuser.me/api/portraits/women/48.jpg",
-    githubUrl: "https://github.com/dianamartinez",
-    linkedInUrl: "https://linkedin.com/in/dianamartinez",
-    portfolioUrl: "https://portfolio.com/dianamartinez",
+    name: "Dissanayake P.D.",
+    regNumber: "E/20/084",
+    imageUrl: "	https://people.ce.pdn.ac.lk/images/students/e20/e20084.jpg",
+    githubUrl: "https://github.com/alicejohnson",
+    linkedInUrl: "https://linkedin.com/in/alicejohnson",
+    portfolioUrl: "https://portfolio.com/alicejohnson", // CN e-Portfolio
+  },
+  {
+    name: "Janakantha S.M.B.G.",
+    regNumber: "E/20/157",
+    imageUrl: "	https://people.ce.pdn.ac.lk/images/students/e20/e20157.jpg",
+    githubUrl: "https://github.com/Bimsara-Janakantha",
+    linkedInUrl: "https://www.linkedin.com/in/Bimsara-Janakantha/",
+    portfolioUrl: "https://www.thecn.com/BJ448",
   },
 ];
 
 const SUPERVISORS = [
   {
-    name: "Alice Johnson",
-    imageUrl: "https://randomuser.me/api/portraits/women/45.jpg",
-    linkedInUrl: "https://linkedin.com/in/alicejohnson",
+    name: "Dr. Upul Jayasinghe",
+    imageUrl:
+      "https://people.ce.pdn.ac.lk/images/staff/academic-staff/upul-jayasinghe.jpg",
+    linkedInUrl: "https://www.linkedin.com/in/upuljm/",
   },
-  {
-    name: "Bob Smith",
-    imageUrl: "https://randomuser.me/api/portraits/men/46.jpg",
+  /* {
+    name: "Mr. H.M.S. Thilina Gunarathne",
+    imageUrl:
+      "https://people.ce.pdn.ac.lk/images/staff/academic-staff/default.jpg",
     linkedInUrl: "https://linkedin.com/in/bobsmith",
-  },
+  }, */
 ];
 
 function Home() {
@@ -712,7 +714,7 @@ function Home() {
           {SUPERVISORS.map((member, id) => (
             <Grid
               key={id}
-              size={{ xs: 12, md: 6 }}
+              size={{ xs: 12 }}
               display={"flex"}
               justifyContent={"center"}
             >
@@ -732,6 +734,57 @@ function Home() {
           my: 5,
         }}
       />
+
+      {/* Reference */}
+      <Container>
+        <Typography textAlign={"center"} variant="h4" mb={1} color="primary">
+          Reference
+        </Typography>
+
+        <List
+          sx={{
+            listStyleType: "disc", // Bullet points
+            mb: 2, // Margin at the bottom
+            pl: 4, // Padding on the left for indentation
+            "& li::marker": {
+              color: "primary.main", // Customize bullet color
+            },
+          }}
+        >
+          {/* First List Item */}
+          <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Link
+              href={"#Link1"} // Replace this with your actual URL
+              color="primary"
+              underline="hover" // Adds underline on hover for accessibility
+            >
+              Link 1
+            </Link>
+          </ListItem>
+
+          {/* Second List Item */}
+          <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Link
+              href={"#Link2"} // Replace with the actual URL
+              color="primary"
+              underline="hover"
+            >
+              Link 2
+            </Link>
+          </ListItem>
+
+          {/* Third List Item */}
+          <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Link
+              href={"#Link3"} // Replace with the actual URL
+              color="primary"
+              underline="hover"
+            >
+              Link 3
+            </Link>
+          </ListItem>
+        </List>
+      </Container>
 
       {/* Usefull Links Section */}
       <Container>
