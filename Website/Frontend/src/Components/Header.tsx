@@ -55,8 +55,12 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
           <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
               <Tab label="home" value="/home" />
-              <Tab label="tab2" value="/tab2" />
-              <Tab label="tab3" value="/tab3" />
+              <Tab label="about" value="/about" />
+              <Tab label="problem Statement" value="/problem" />
+              <Tab label="objectives" value="/objectives" />
+              <Tab label="methodology I" value="/method1" />
+              <Tab label="methodology II" value="/method2" />
+              <Tab label="team" value="/team" />
             </TabList>
           </Box>
         </TabContext>
