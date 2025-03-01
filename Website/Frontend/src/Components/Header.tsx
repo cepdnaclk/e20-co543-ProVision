@@ -40,10 +40,8 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
     }
   }, [currentPage]);
 
-  // Function to update tab when scrolling
-
   const navigation = (newValue: string) => {
-    console.log("Navigate to section");
+    //console.log("Navigate to section");
     const section = document.getElementById(newValue);
 
     if (section) {
@@ -52,10 +50,11 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
   };
 
   const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    console.log("New tab: ", newValue);
+    //console.log("New tab: ", newValue);
+    sessionStorage.setItem("tabName", newValue);
+    sessionStorage.setItem("flag", "true");
 
     if (currentPage !== "/home") {
-      sessionStorage.setItem("tabName", newValue);
       window.location.href = "/home";
     } else {
       setValue(newValue);
@@ -66,18 +65,34 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
     navigate("/"); // Redirect to the home page
   };
 
+  // Function to update tab when scrolling
   useEffect(() => {
     const sections = document.querySelectorAll("[id]"); // Select all sections
-    console.log("Sections: ", sections);
+    //console.log("Sections: ", sections);
 
     const observer = new IntersectionObserver(
       (entries) => {
         const visibleSection = entries.find((entry) => entry.isIntersecting);
+
         if (visibleSection) {
           const section = visibleSection.target.id;
+
           if (SUB_TOPICS.includes(section)) {
-            console.log("Now see: " + section);
-            setValue(section);
+            let flag = sessionStorage.getItem("flag") === "true";
+            const tab = sessionStorage.getItem("tabName");
+
+            //console.log("Now see: " + section + "\tFlag: " + flag + "\tvalue: " + value);
+
+            if (flag && section === tab) {
+              flag = false;
+              sessionStorage.setItem("flag", "false");
+            }
+
+            //console.log("New Flag: ", flag);
+
+            if (!flag) {
+              setValue(section);
+            }
           }
         }
       },
