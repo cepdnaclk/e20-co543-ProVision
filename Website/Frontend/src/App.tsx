@@ -6,7 +6,8 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
-import Todo from "./Pages/Todo";
+import Method1 from "./Pages/Method1";
+import Method2 from "./Pages/Method2";
 
 function App() {
   // State to toggle between light and dark themes
@@ -51,7 +52,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/tab1" element={<Todo />} />
+              <Route path="/method1" element={<Method1 />} />
+              <Route path="/method2" element={<Method2 />} />
             </Routes>
           </Box>
 

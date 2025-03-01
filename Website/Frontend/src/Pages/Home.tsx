@@ -690,7 +690,12 @@ function Home() {
 
         <Grid container spacing={2} my={3}>
           {TEAM.map((member, id) => (
-            <Grid key={id} size={{ xs: 12, md: 6, lg: 3 }}>
+            <Grid
+              key={id}
+              size={{ xs: 12, md: 6, lg: 3 }}
+              display={"flex"}
+              justifyContent={"center"}
+            >
               <PhotoCard
                 key={id}
                 name={member.name}

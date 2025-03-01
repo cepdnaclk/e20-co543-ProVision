@@ -5,32 +5,89 @@ import { useNavigate } from "react-router-dom";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
   isDarkThemeOn: boolean;
   toggleTheme: () => void;
 }
 
+const SUB_TOPICS = [
+  "home",
+  "about",
+  "problem",
+  "objectives",
+  "method1",
+  "method2",
+  "team",
+];
+
 function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
   const navigate = useNavigate();
-  const [value, setValue] = useState<string>("home");
+  const currentPage = window.location.pathname;
+  const currentTab = sessionStorage.getItem("tabName");
 
-  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
-    console.log("New tab: ", newValue);
+  const [value, setValue] = useState<string>(currentTab || "home");
 
-    setValue(newValue);
+  useEffect(() => {
+    navigation(value);
+  }, [value]);
+
+  useEffect(() => {
+    const page = currentPage.split("/")[1];
+    if (page !== "home") {
+      setValue(page);
+    }
+  }, [currentPage]);
+
+  // Function to update tab when scrolling
+
+  const navigation = (newValue: string) => {
+    console.log("Navigate to section");
     const section = document.getElementById(newValue);
 
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
-    //navigate(newValue);
+  };
+
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
+    console.log("New tab: ", newValue);
+
+    if (currentPage !== "/home") {
+      sessionStorage.setItem("tabName", newValue);
+      window.location.href = "/home";
+    } else {
+      setValue(newValue);
+    }
   };
 
   const handleClick = () => {
     navigate("/"); // Redirect to the home page
   };
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("[id]"); // Select all sections
+    console.log("Sections: ", sections);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries.find((entry) => entry.isIntersecting);
+        if (visibleSection) {
+          const section = visibleSection.target.id;
+          if (SUB_TOPICS.includes(section)) {
+            console.log("Now see: " + section);
+            setValue(section);
+          }
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect(); // Cleanup observer
+  }, []);
 
   return (
     <Box
