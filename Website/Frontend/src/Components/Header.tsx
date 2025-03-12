@@ -133,8 +133,8 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
               <Tab label="about" value="about" />
               <Tab label="problem Statement" value="problem" />
               <Tab label="objectives" value="objectives" />
-              <Tab label="methodology I" value="method1" />
-              <Tab label="methodology II" value="method2" />
+              {/* <Tab label="methodology I" value="method1" /> */}
+              <Tab label="methodology" value="method2" />
               <Tab label="team" value="team" />
             </TabList>
           </Box>

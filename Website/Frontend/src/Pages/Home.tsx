@@ -348,7 +348,7 @@ function Home() {
       />
 
       {/* Methadology 1 Section */}
-      <Container
+      {/* <Container
         id="method1"
         sx={{
           display: "flex",
@@ -510,7 +510,7 @@ function Home() {
           width: "80%",
           my: 5,
         }}
-      />
+      /> */}
 
       {/* Methadology 2 Section */}
       <Container
@@ -522,18 +522,9 @@ function Home() {
           alignItems: "center",
         }}
       >
-        <Box
-          component="img"
-          src={heroImage}
-          alt="Problem Statement"
-          sx={{
-            width: { xs: "100%", md: "35%" },
-            borderRadius: "25px",
-          }}
-        />
         <Stack>
           <Typography variant="h4" mb={1} color="primary">
-            Methodology II - Specific Weather Condition Methods
+            Methodology - Specific Weather Condition Methods
           </Typography>
           <Typography fontFamily="arial" color="primary" variant="h5" mb={1}>
             Overview
@@ -583,6 +574,16 @@ function Home() {
             </ListItem>
           </List>
         </Stack>
+
+        <Box
+          component="img"
+          src={heroImage}
+          alt="Problem Statement"
+          sx={{
+            width: { xs: "100%", md: "35%" },
+            borderRadius: "25px",
+          }}
+        />
       </Container>
 
       <TableContainer
@@ -760,44 +761,73 @@ function Home() {
 
         <List
           sx={{
-            listStyleType: "disc", // Bullet points
-            mb: 2, // Margin at the bottom
-            pl: 4, // Padding on the left for indentation
+            listStyleType: "disc",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            mb: 2,
+            pl: 4,
             "& li::marker": {
-              color: "primary.main", // Customize bullet color
+              color: "primary.main",
             },
           }}
         >
           {/* First List Item */}
           <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Typography color="primary">
+              Y. Wan, M. Shao, Y. Cheng, and W. Zuo, “Image all-in-one adverse
+              weather removal via dynamic model weights generation,”
+              Knowl.-Based Syst., vol. 302, p. 112324, 2024, doi:
+              10.1016/j.knosys.2024.112324.
+            </Typography>
+          </ListItem>
+
+          <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Typography color="primary">
+              S. G. Narasimhan and S. K. Nayar, “Removing weather effects from
+              monochrome images,” in Proc. IEEE Conf. Comput. Vis. Pattern
+              Recognit. (CVPR), 2001, doi: 10.1109/cvpr.2001.990956.
+            </Typography>
+          </ListItem>
+
+          <ListItem sx={{ display: "list-item", p: 0 }}>
+            <Typography color="primary">
+              A. Kodieswari, V. Parameshwari, and S. Sruthi, “Reduction of rain
+              and snow within the image using image processing,” in Lect. Notes
+              Elect. Eng., Springer, 2021, pp. 75–81, doi:
+              10.1007/978-981-15-8221-9_7.
+            </Typography>
+          </ListItem>
+
+          <ListItem sx={{ display: "list-item", p: 0 }}>
             <Link
-              href={"#Link1"} // Replace this with your actual URL
+              href={
+                "https://github.com/hongwang01/Video-and-Single-Image-Deraining"
+              } // Replace this with your actual URL
               color="primary"
               underline="hover" // Adds underline on hover for accessibility
             >
-              Link 1
+              <Typography>
+                hongwang01, “Video and single image deraining: A comprehensive
+                survey on deraining,” GitHub, 2021. [Online]. Available:
+                https://github.com/hongwang01/Video-and-Single-Image-Deraining
+                (accessed Mar. 12, 2025).
+              </Typography>
             </Link>
           </ListItem>
 
           {/* Second List Item */}
           <ListItem sx={{ display: "list-item", p: 0 }}>
             <Link
-              href={"#Link2"} // Replace with the actual URL
+              href={"https://github.com/zhuyr97/Awesome-Weather-Removal"}
               color="primary"
               underline="hover"
             >
-              Link 2
-            </Link>
-          </ListItem>
-
-          {/* Third List Item */}
-          <ListItem sx={{ display: "list-item", p: 0 }}>
-            <Link
-              href={"#Link3"} // Replace with the actual URL
-              color="primary"
-              underline="hover"
-            >
-              Link 3
+              <Typography>
+                zhuyr97, “Awesome-weather-removal,” GitHub, 2025. [Online].
+                Available: https://github.com/zhuyr97/Awesome-Weather-Removal
+                (accessed Mar. 12, 2025).
+              </Typography>
             </Link>
           </ListItem>
         </List>

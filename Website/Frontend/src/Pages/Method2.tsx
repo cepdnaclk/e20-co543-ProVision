@@ -7,15 +7,19 @@ import {
   Paper,
   Container,
   Grid2,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
 } from "@mui/material";
 import placeholder from "../assets/placeholder2.jpg";
-
-const IMAGE_SERVER_URL = import.meta.env.VITE_IMAGE_SERVER_URL;
+import { sendData } from "../Api/Api";
 
 const Method2 = () => {
   const theme = useTheme();
   const [originalImage, setOriginalImage] = useState<string | null>(null);
   const [enhancedImage, setEnhancedImage] = useState<string | null>(null);
+  const [selectedEffect, setSelectedEffect] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,24 +33,42 @@ const Method2 = () => {
     }
   };
 
+  const convertImage = (image: string) => {
+    // Convert base64 to a File object
+    const byteCharacters = atob(image.split(",")[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const file = new File([byteArray], "image.png", { type: "image/png" });
+
+    // Create FormData and append the file
+    const formData = new FormData();
+    formData.append("file", file);
+
+    return formData;
+  };
+
   const handleSendToServer = async () => {
     if (!originalImage) return alert("Please upload an image first!");
+    if (selectedEffect === "") return alert("Please select an effect first!");
 
     setLoading(true);
 
     try {
-      const response = await fetch(IMAGE_SERVER_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ image: originalImage }),
-      });
+      const obj = convertImage(originalImage);
 
-      if (!response.ok) throw new Error("Failed to process image");
+      const serverResponse = await sendData(obj, selectedEffect);
 
-      const data = await response.json();
-      setEnhancedImage(data.enhancedImage); // Assuming API returns { enhancedImage: "image-url" }
+      if (serverResponse.status !== 200) {
+        throw new Error("Failed to process image");
+      }
+
+      // Create a URL for the processed image
+      const imageUrl = URL.createObjectURL(new Blob([serverResponse.data]));
+
+      setEnhancedImage(imageUrl);
     } catch (error) {
       console.error("Error:", error);
       alert("Error processing the image");
@@ -65,11 +87,17 @@ const Method2 = () => {
       }}
     >
       <Typography variant="h4" gutterBottom color="primary" mb={2}>
-        Methodology II - Specific Weather Condition Methods
+        Methodology - Specific Weather Condition Methods
       </Typography>
 
       {/* Upload Button */}
-      <Box my={5}>
+      <Box
+        my={5}
+        display={"flex"}
+        gap={3}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
         <input
           type="file"
           accept="image/*"
@@ -93,6 +121,20 @@ const Method2 = () => {
         >
           {loading ? "Processing..." : "Enhance Image"}
         </Button>
+
+        {/* Method Selector */}
+        <FormControl sx={{ mx: 1, width: 160 }} margin="normal">
+          <InputLabel>Choose Effect</InputLabel>
+          <Select
+            value={selectedEffect}
+            onChange={(e) => setSelectedEffect(e.target.value)}
+            label="Choose Effect"
+          >
+            <MenuItem value="haze">Haze</MenuItem>
+            <MenuItem value="rain">Rain</MenuItem>
+            <MenuItem value="snow">Snow</MenuItem>
+          </Select>
+        </FormControl>
       </Box>
 
       {/* Images Display */}
