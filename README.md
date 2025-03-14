@@ -11,7 +11,7 @@ Weather conditions such as rain, fog, haze, and snow degrade image quality, impa
 - **Performance Evaluation**: Assessed using PSNR, SSIM, MSE Hybrid Loss, and contrast improvement metrics.  
 - **Dataset Handling**: Collected from **Kaggle, GitHub repositories, and Google Images** with preprocessing steps for improved results.  
 
-## 🛠 Tech Stack  
+## Tech Stack  
 - **Programming Language**: Python  
 - **Deep Learning Frameworks**: TensorFlow, Keras, PyTorch  
 - **Image Processing**: OpenCV, NumPy  
