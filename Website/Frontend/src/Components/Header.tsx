@@ -76,12 +76,13 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
 
         if (visibleSection) {
           const section = visibleSection.target.id;
+          //console.log("Section: ", section);
 
           if (SUB_TOPICS.includes(section)) {
             let flag = sessionStorage.getItem("flag") === "true";
             const tab = sessionStorage.getItem("tabName");
 
-            //console.log("Now see: " + section + "\tFlag: " + flag + "\tvalue: " + value);
+            //console.log("Flag: " + flag + "\tvalue: " + value);
 
             if (flag && section === tab) {
               flag = false;
@@ -96,7 +97,10 @@ function Header({ isDarkThemeOn, toggleTheme }: HeaderProps) {
           }
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
+      {
+        rootMargin: "7% 0px -60% 0px", // Focus on the top 20% of the viewport
+        threshold: 0.7, // Fires when a small part of the section is visible
+      }
     );
 
     sections.forEach((section) => observer.observe(section));

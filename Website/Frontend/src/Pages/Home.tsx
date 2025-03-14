@@ -19,10 +19,16 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import heroImage from "../assets/Homepage_bg.jpg";
+
 import { useTheme } from "@mui/material/styles";
 import PhotoCard from "../Components/PhotoCard";
 import TryButton from "../Components/TryButton";
+
+import heroImage from "../assets/Homepage_bg.jpg";
+import problemImage from "../assets/rain-drops-car-glass.jpg";
+import aboutImage from "../assets/foggy.jpg";
+import rainImage from "../assets/rain camera.jpg";
+import hazeImage from "../assets/haze.jpg";
 
 const links = [
   {
@@ -109,7 +115,7 @@ function Home() {
     >
       {/* Hero Section */}
       <Box
-        id="home"
+        id={"home"}
         height="calc(100vh - 100px)"
         width="100%"
         mb={5}
@@ -131,6 +137,7 @@ function Home() {
         }}
       >
         <Container
+          id={"home"}
           sx={{
             border: "5px solid rgba(255, 255, 255, 0.9)",
             padding: "20px",
@@ -180,7 +187,7 @@ function Home() {
       >
         <Box
           component="img"
-          src={heroImage}
+          src={aboutImage}
           alt="About"
           sx={{
             width: { xs: "100%", md: "35%" },
@@ -241,7 +248,7 @@ function Home() {
 
         <Box
           component="img"
-          src={heroImage}
+          src={problemImage}
           alt="Problem Statement"
           sx={{
             width: { xs: "100%", md: "35%" },
@@ -273,7 +280,7 @@ function Home() {
       >
         <Box
           component="img"
-          src={heroImage}
+          src={rainImage}
           alt="About"
           sx={{
             width: { xs: "100%", md: "35%" },
@@ -577,7 +584,7 @@ function Home() {
 
         <Box
           component="img"
-          src={heroImage}
+          src={hazeImage}
           alt="Problem Statement"
           sx={{
             width: { xs: "100%", md: "35%" },
